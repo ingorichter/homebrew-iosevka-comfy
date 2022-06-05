@@ -1,10 +1,11 @@
-# Ingorichter Iosevka-comfy
+# ingorichter Iosevka-comfy
 
 ## How do I install these formulae?
 
-`brew install ingorichter/iosevka-comfy/<formula>`
+`brew tap ingorichter/iosevka-comfy` and then `brew install font-iosevka-comfy`.
 
-Or `brew tap ingorichter/iosevka-comfy` and then `brew install <formula>`.
+Install all variations of Iosevka Comfy. The list of available font variations is available from [here](https://github.com/protesilaos/iosevka-comfy)
+This version of the font has slight modifications over it's original and it's explained on in the [README](https://github.com/protesilaos/iosevka-comfy/blob/master/README.md)
 
 ## Documentation
 
