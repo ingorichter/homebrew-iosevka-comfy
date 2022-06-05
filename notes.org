@@ -1,0 +1,16 @@
+# Downloaded source zip from https://github.com/protesilaos/iosevka-comfy and unzipped into directory
+
+## Create zip file with all fonts
+
+I wanted all `hinted` font files in one zip file for the release.
+I used fd instead of find.
+
+#+begin_src bash
+fd -e ttf | grep -v unhinted | zip -9 -j iosevka-comfy.zip -@
+#+end_src
+
+## Create the list of fonts for Cask formula
+
+#+begin_src
+find . -name "*.ttf" -type f -exec basename {} \; | sort | awk '{ printf "font \"%s\"\n", $1 }' | pbcopy
+#+end_src
