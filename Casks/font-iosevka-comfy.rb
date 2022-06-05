@@ -1,7 +1,7 @@
 cask "font-iosevka-comfy" do
   version "0.1.0"
   sha256 "2c6843d48838227e58861be4b7f75f2b77116b99a1ab82707f42b17167549dd0"
-  
+
   url "https://github.com/ingorichter/homebrew-iosevka-comfy/releases/download/#{version}/iosevka-comfy.zip"
   name "Iosevka Comfy"
   homepage "https://github.com/protesilaos/iosevka-comfy"
