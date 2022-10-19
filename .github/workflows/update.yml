@@ -1,8 +1,10 @@
 name: update cask
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
-  schedule:
-    - cron: "0 12 * * *"
+  workflow_dispatch:
+    
+  # schedule:
+  #   - cron: "0 12 * * *"
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
