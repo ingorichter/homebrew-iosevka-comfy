@@ -2,7 +2,7 @@ name: update cask
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   workflow_dispatch:
-    
+
   # schedule:
   #   - cron: "0 12 * * *"
 jobs:
@@ -33,9 +33,9 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      # - name: Update Fonts
+      #   run: ./scripts/update.sh
       - name: Update Fonts
-        run: ./scripts/update.sh
-      - name: Call custom ci script
         run: ./.github/scripts/udate.sh
         shell: bash
         env:
