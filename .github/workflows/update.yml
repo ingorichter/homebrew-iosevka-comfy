@@ -36,7 +36,7 @@ jobs:
       # - name: Update Fonts
       #   run: ./scripts/update.sh
       - name: Update Fonts
-        run: ./.github/scripts/udate.sh
+        run: ./.github/scripts/update.sh
         shell: bash
         env:
           SOME_VAR: some_secret
