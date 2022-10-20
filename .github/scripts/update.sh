@@ -7,7 +7,19 @@
 set -uo pipefail
 
 # Step 1: Find the latest tag
-LATEST_TAG=$(curl -L https://api.github.com/repos/protesilaos/iosevka-comfy/tags -s | jq -r '.[0].name')
+LATEST_TAG=$(curl -H "Accept: application/vnd.github+json" -L https://api.github.com/repos/protesilaos/iosevka-comfy/tags -s | jq -r '.[0] | .commit.sha,.name')
+
+readarray -t STRARRAY<<< "${LATEST_TAG}"
+declare -p STRARRAY
+COMMIT_SHA=${STRARRAY[0]}
+LATEST_TAG=${STRARRAY[1]}
+
+# Step 1a: Find the comment from the commit
+COMMENT=$(curl -H "Accept: application/vnd.github+json" -L https://api.github.com/repos/protesilaos/iosevka-comfy/git/commits/${COMMIT_SHA} -s | jq -r '.message')
+
+echo "${COMMENT}"
+
+exit 1
 
 ZIPFILE_BASENAME=iosevka-comfy-${LATEST_TAG}
 IOSEVKA_ZIP_FILE=${ZIPFILE_BASENAME}.zip
@@ -69,4 +81,4 @@ rm "${IOSEVKA_ZIP_FILE}"
 # git push -u origin ${LATEST_TAG}
 
 # Step 9: upload files for release
-export LATEST_TAG
+export LATEST_TAG COMMENT
