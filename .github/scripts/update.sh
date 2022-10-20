@@ -5,6 +5,7 @@
 # - jq
 
 set -uo pipefail
+env
 
 # Step 1: Find the latest tag
 LATEST_TAG=$(curl -H "Accept: application/vnd.github+json" -L https://api.github.com/repos/protesilaos/iosevka-comfy/tags -s | jq -r '.[0] | .commit.sha,.name')
@@ -13,6 +14,9 @@ readarray -t STRARRAY<<< "${LATEST_TAG}"
 declare -p STRARRAY
 COMMIT_SHA=${STRARRAY[0]}
 LATEST_TAG=${STRARRAY[1]}
+
+echo "COMMIT_SHA=${COMMIT_SHA}" >> "${GITHUB_ENV}"
+echo "LATEST_TAG=${LATEST_TAG}" >> "${GITHUB_ENV}"
 
 # Step 1a: Find the comment from the commit
 COMMENT=$(curl -H "Accept: application/vnd.github+json" -L https://api.github.com/repos/protesilaos/iosevka-comfy/git/commits/${COMMIT_SHA} -s | jq -r '.message')
