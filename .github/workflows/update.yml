@@ -1,4 +1,4 @@
-name: update cask
+name: Update Formula
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
   # schedule:
   #   - cron: "0 12 * * *"
 jobs:
-  Explore-GitHub-Actions:
+  Update-Formula:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,7 +15,12 @@ jobs:
         run: ${{ github.workspace }}/.github/scripts/update.sh
         shell: bash
 
-      - name: GH Release
+      - name: Commit Latest Formula
+        uses: stefanzweifel/git-auto-commit-action@v4.15.1
+        with:
+          commit_message: Update Formula file
+
+      - name: Create a new tag
         uses: softprops/action-gh-release@v0.1.14
         with:
           body_path: CHANGELOG.txt
