@@ -15,6 +15,11 @@ declare -p STRARRAY
 COMMIT_SHA=${STRARRAY[0]}
 LATEST_TAG=${STRARRAY[1]}
 
+if [ -z "${GITHUB_ENV}" ]
+then
+    GITHUB_ENV=github.env
+fi
+
 echo "COMMIT_SHA=${COMMIT_SHA}" >> "${GITHUB_ENV}"
 echo "LATEST_TAG=${LATEST_TAG}" >> "${GITHUB_ENV}"
 
