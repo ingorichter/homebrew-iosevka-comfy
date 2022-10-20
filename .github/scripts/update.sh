@@ -17,9 +17,7 @@ LATEST_TAG=${STRARRAY[1]}
 # Step 1a: Find the comment from the commit
 COMMENT=$(curl -H "Accept: application/vnd.github+json" -L https://api.github.com/repos/protesilaos/iosevka-comfy/git/commits/${COMMIT_SHA} -s | jq -r '.message')
 
-echo "${COMMENT}"
-
-exit 1
+echo "${COMMENT}" > commit-comment.txt
 
 ZIPFILE_BASENAME=iosevka-comfy-${LATEST_TAG}
 IOSEVKA_ZIP_FILE=${ZIPFILE_BASENAME}.zip
