@@ -10,13 +10,15 @@ This version of the font has slight modifications over it's original and it's ex
 ## Todo
 
 - github workflow steps
-  - add github workflow to check for new releases
-  - add github workflow to download the new release
-  - create a new zip file with the font of the new release
-  - create a new release in this repo
-  - copy the release notes from the original repo
-  - update the cask formula with the new version number
-  - update the cask formula with the new sha256 of the zip file
+  - [x] add github workflow to check for new releases
+  - [x] add github workflow to download the new release
+  - [x] create a new zip file with the font of the new release
+  - [x] create a new release in this repo
+  - [x] copy the release notes from the original repo
+  - [x] update the cask formula with the new version number
+  - [x] update the cask formula with the new sha256 of the zip file
+  - [ ] run the workflow periodically
+  - [ ] create new release only if there is a new release
 
 ## Documentation
 
