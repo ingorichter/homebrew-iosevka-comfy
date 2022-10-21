@@ -21,6 +21,8 @@ if [ ! -v GITHUB_ENV ] || [ -z "${GITHUB_ENV}" ]
 then
     ENV_FILE="github.env"
     echo "" > ${ENV_FILE}
+else
+    ENV_FILE=${GITHUB_ENV}
 fi
 
 # preservere values to create the git tag later in the workflow
@@ -29,8 +31,6 @@ echo "LATEST_TAG=${LATEST_TAG}" >> "${ENV_FILE}"
 
 # Step 1a: Find the message from the commit and write it to CHANGELOG.txt
 curl -H "Accept: application/vnd.github+json" -L --user-agent "${CURL_USERAGENT}" "https://api.github.com/repos/protesilaos/iosevka-comfy/git/commits/${COMMIT_SHA}" -s | jq -r '.message' > "CHANGELOG.txt"
-
-# echo "${COMMENT}" > CHANGELOG.txt
 
 ZIPFILE_BASENAME=iosevka-comfy-${LATEST_TAG}
 IOSEVKA_ZIP_FILE=${ZIPFILE_BASENAME}.zip
