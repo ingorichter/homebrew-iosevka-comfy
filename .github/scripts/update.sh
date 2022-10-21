@@ -36,7 +36,6 @@ ZIPFILE_BASENAME=iosevka-comfy-${LATEST_TAG}
 IOSEVKA_ZIP_FILE=${ZIPFILE_BASENAME}.zip
 IOSEVKA_ZIP_FILE_TARGET=iosevka-comfy.zip
 
-exit 1
 # Step 2: download the latest release
 curl -L --user-agent "${CURL_USERAGENT}" "https://github.com/protesilaos/iosevka-comfy/archive/refs/tags/${LATEST_TAG}.zip" -o "${IOSEVKA_ZIP_FILE}"
 
