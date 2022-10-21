@@ -1,16 +1,13 @@
 # Downloaded source zip from https://github.com/protesilaos/iosevka-comfy and unzipped into directory
 
-## Create zip file with all fonts
+## Create a new Release for the Formula
 
 I wanted all `hinted` font files in one zip file for the release.
-I used fd instead of find.
+The final script is in `./.github/scripts/update.sh`
+All the steps are outlined in the script itself. There are multiple steps that query some information from the remote repo (tags, comment for tag).
+Downloading the zip file with the fonts and repackaging it for the release. The new zip file with the hinted versions of the fonts will be used for the release. The release name will the the same as from the remote repo.
 
-#+begin_src bash
-fd -e ttf | grep -v unhinted | zip -9 -j iosevka-comfy.zip -@
-#+end_src
+The remaining work of the release is accomplished by using some github actions
 
-## Create the list of fonts for Cask formula
-
-#+begin_src
-find . -name "*.ttf" -type f -exec basename {} \; | sort | awk '{ printf "font \"%s\"\n", $1 }' | pbcopy
-#+end_src
+- Commit the updated Formula - stefanzweifel/git-auto-commit-action@v4.15.1
+- Create a new release - softprops/action-gh-release@v0.1.14
